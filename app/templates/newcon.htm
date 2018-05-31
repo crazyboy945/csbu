@@ -1,0 +1,6 @@
+{% extends "base.html" %} {% import "bootstrap/wtf.html" as wtf %} {% block title %}合同管理 -新增合同{% endblock %} {% block page_content%}
+<div class="page-header">
+    <h1>新增/维护合同</h1>
+</div>
+
+{{ wtf.quick_form(form,form_type ="horizontal") }} {% endblock %}

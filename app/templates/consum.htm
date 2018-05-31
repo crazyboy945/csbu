@@ -1,0 +1,84 @@
+{%extends "base.html"%} {%block page_content%}
+
+<div class="panel panel-primary">
+
+    <div class="panel-heading">
+        开票回款情况
+    </div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label class="col-sm-2 control-label">本期开票</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{bill_month_sum}}</p>
+            </div>
+            <label class="col-sm-2 control-label">本期回款</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{repayment_month_sum}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">本年开票</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{bill_year_sum}}</p>
+            </div>
+            <label class="col-sm-2 control-label">本年回款</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{repayment_year_sum}}</p>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="col-sm-2 control-label">本期合同额</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{contract_month_sum}}</p>
+            </div>
+            <label class="col-sm-2 control-label">本年合同额</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{contract_year_sum}}</p>
+            </div>
+        </div>
+    </div>
+</div>
+{%for con in cons %}
+<div class="panel panel-default">
+
+    <div class="panel-heading">
+        项目:{{con.project_name}}
+    </div>
+    <div class="panel-body">
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">领域</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{con.department}}</p>
+            </div>
+            <label class="col-sm-2 control-label">客户</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{con.custom}}</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">合同时间</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{con.contract_date}}</p>
+            </div>
+            <label class="col-sm-2 control-label">合同金额</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{con.contract_price}}</p>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label class="col-sm-2 control-label">预计开票时间</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{con.bill_date}}</p>
+            </div>
+            <label class="col-sm-2 control-label">预计开票金额</label>
+            <div class="col-sm-2">
+                <p class="form-control-static">{{con.bill_price}}</p>
+            </div>
+        </div>
+
+    </div>
+</div>
+{%endfor%} {%endblock%}

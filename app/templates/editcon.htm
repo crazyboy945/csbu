@@ -1,0 +1,94 @@
+{% extends "basenonav.htm" %} {% import "bootstrap/wtf.html" as wtf %} {% block title %}合同管理 -开票汇款维护{% endblock %} {% block page_content%}
+
+
+<div class="container">
+
+    <h3>合同开票回款信息</h3>
+
+    <form class="form form-horizontal" method="POST" role="form">
+        {{form.hidden_tag()}}
+        <div class="panel">
+            <div class="panel-body">
+
+                <div class="form-group">
+                    {{form.bill_date.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.bill_date(class="form-control",type= "date")}}
+                    </div>
+
+                    {{form.bill_price.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.bill_price(class="form-control",type="number")}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{form.repayment_date.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.repayment_date(class="form-control",type= "date")}}
+                    </div>
+
+                    {{form.repayment.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.repayment(class="form-control",type="number")}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{form.total_bill.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.total_bill(class="form-control",type= "number")}}
+                    </div>
+
+                    {{form.total_payment.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.total_payment(class="form-control",type="number")}}
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    {{form.nbill_date.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.nbill_date(class="form-control",type= "date")}}
+                    </div>
+
+                    {{form.nbill_price.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.nbill_price(class="form-control",type="number")}}
+                    </div>
+                </div>
+                <div class="form-group">
+                    {{form.npayment_date.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.npayment_date(class="form-control",type= "date")}}
+                    </div>
+
+                    {{form.nrepayment.label(class="col-sm-2 control-label")}}
+
+                    <div class="col-sm-3">
+                        {{form.nrepayment(class="form-control",type="number")}}
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group  required">
+            <div align="center">
+                {{form.submit(class="btn btn-primary")}} </div>
+        </div>
+</div>
+</form>
+
+
+</div>
+
+{% endblock %}

@@ -1,0 +1,109 @@
+{% extends "basenonav.htm" %} {% block page_content%}
+<div class="container">
+    <form class="form form-horizontal" method="POST" role="form">
+
+        <div class="panel">
+            <div class="panel-body">
+                <div class="form-group require">
+                    <label class="col-sm-2 control-label">合同编号</label>
+                    <div class="col-sm-10">
+                        <p class="form-control-static">{{form.contract_number}}</p>
+                    </div>
+
+                    <label class="col-sm-2 control-label">部门</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.department}}
+                    </div>
+                </div>
+
+                <div class="form-group  required has-error">
+                    <label class="col-sm-2 control-label">客户</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">{{form.custom}}
+                    </div>
+                </div>
+
+                <div class="form-group  required">
+                    <label class="col-sm-2 control-label">项目名称</label>
+                    <div class="col-sm-8">
+                        <p class="form-control-static">{{form.project_name}}
+                    </div>
+                </div>
+
+
+                <div class="form-group  required">
+                    <label class="col-sm-2 control-label">合同日期</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.contract_date}}
+                    </div>
+
+                    <label class="col-sm-2 control-label">合同金额</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.contract_price}}
+                    </div>
+                </div>
+                <div class="form-group  required">
+                    <label class="col-sm-2 control-label">累计开票</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.total_bill}}
+                    </div>
+
+                    <label class="col-sm-2 control-label">累计回款</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.total_payment}}
+                    </div>
+                </div>
+                <div class="form-group  required">
+                    <label class="col-sm-2 control-label">开票日期</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.bill_date}}
+                    </div>
+
+                    <label class="col-sm-2 control-label">开票金额</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.bill_price}}
+                    </div>
+                </div>
+
+                <div class="form-group  required">
+                    <label class="col-sm-2 control-label">回款日期</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.repayment_date}}
+                    </div>
+
+                    <label class="col-sm-2 control-label">回款金额</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.repayment}}
+                    </div>
+                </div>
+                <div class="form-group  required">
+                    <label class="col-sm-2 control-label">累计开票</label>
+
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.total_bill}}
+                    </div>
+
+                    <label class="col-sm-2 control-label">累计回款</label>
+                    <div class="col-sm-3">
+                        <p class="form-control-static">{{form.total_payment}}
+                    </div>
+                </div>
+
+
+            </div>
+        </div>
+
+        <div class="form-group  required">
+            <div align="center">
+                <button type="submit">删除</button> </div>
+        </div>
+</div>
+</form>
+{%endblock%}

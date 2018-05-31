@@ -1,0 +1,205 @@
+{% extends "base.html" %} 
+
+{% block title %}合同管理 -合同信息{% endblock %} 
+{% block styles%}
+    {{super()}}
+
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    
+{%endblock%}
+
+{%block scripts%}
+    {{super()}}
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script>
+    $("#department").find("option[value='{{contract.department}}']").attr("selected",true);
+
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function() {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#contract_date',
+            type:'date',
+            min:'0001-01-01'
+        });
+        laydate.render({
+            elem: '#bill_date',
+            type:'date',
+            min:'0001-01-01'
+        });
+
+        laydate.render({
+            elem: '#repayment_date',
+            type:'date',
+            min:'0001-01-01'
+        });
+
+        laydate.render({
+            elem: '#nbill_date',
+            type:'date',
+            min:'0001-01-01'
+        });
+
+        laydate.render({
+            elem: '#npayment_date',
+            type:'date',
+            min:'0001-01-01'
+        });
+
+
+
+    });
+</script>
+
+{%endblock%}
+
+{% block page_content%}
+    
+    <div class="layui-card">
+        <div class="layui-card-header"><h2>合同信息</h2></div>
+        <div class="layui-card-body">
+ 
+        <form class="layui-form" action="" method="post">
+            <input name="id" type="hidden" value="{{contract.id}}">
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">合同编号</label>
+                <div class="layui-input-inline">
+                    <input name="contract_number" class="layui-input" lay-verify="required" type="text" placeholder="请输入合同编号" autocomplete="off" lay-verify="title" value="{{contract.contract_number}}">
+                </div>
+          
+                <label class="layui-form-label">部门</label>
+                <div class="layui-input-inline">
+                    <select name="department" id="department" lay-verify="required">
+                        <option value="">直接选择或搜索选择</option>
+                        <option value="SAP">SAP</option>
+                        <option value="ORACLE">ORACLE</option>
+                        <option value="SIEBEL">SIEBEL</option>
+                        <option value="JR">JR</option>
+
+                    </select>
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    <input name="project_name" type="text" class="layui-input" placeholder="请输入项目名称" autocomplete="off" lay-verify="required" lay-verify="title" value="{{contract.project_name}}">
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">客户</label>
+                <div class="layui-input-block">
+                    <input name="custom" width="220" class="layui-input" type="text" placeholder="请输入客户名称" autocomplete="off"  lay-verify="required" lay-verify="title" value="{{contract.custom}}">
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">合同日期</label>
+                <div class="layui-input-inline">
+                    <input name="contract_date" id="contract_date"  class="layui-input" type="text" autocomplete="off" lay-verify="title" value="{{contract.contract_date}}">
+                </div>
+
+
+                <label class="layui-form-label">合同金额</label>
+                <div class="layui-input-inline">
+                    <input name="contract_price" class="layui-input" placeholder="￥" type="text" autocomplete="off" lay-verify="number" value="{{contract.contract_price}}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">开票金额</label>
+                <div class="layui-input-inline">
+                    <input name="bill_price" class="layui-input" placeholder="￥" type="text" autocomplete="off" lay-verify="number" value="{{contract.bill_price}}">
+                </div>
+
+
+                <label class="layui-form-label">开票日期</label>
+                <div class="layui-input-inline">
+                    <input name="bill_date" id="bill_date" class="layui-input"  type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="title" value="{{contract.bill_date}}">
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">回款金额</label>
+                <div class="layui-input-inline">
+                    <input name="repayment" class="layui-input" placeholder="￥" type="text" autocomplete="off" lay-verify="number" value="{{contract.repayment}}">
+                </div>
+
+                <label class="layui-form-label">回款日期</label>
+                <div class="layui-input-inline">
+                    <input name="repayment_date" id="repayment_date"  class="layui-input"  type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="date" value="{{contract.repayment_date}}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">累计开票</label>
+                <div class="layui-input-inline">
+                    <input name="total_bill" class="layui-input" placeholder="￥" type="text" autocomplete="off" lay-verify="number" value="{{contract.total_bill}}">
+                </div>
+
+                <label class="layui-form-label">累计回款</label>
+                <div class="layui-input-inline">
+                    <input name="total_payment" class="layui-input" placeholder="￥" type="text" autocomplete="off" lay-verify="number" value="{{contract.total_payment}}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">下次开票</label>
+                <div class="layui-input-inline">
+                    <input name="nbill_date"  id="nbill_date" class="layui-input" placeholder="yyyy-mm-dd" type="text" autocomplete="off" lay-verify="date" value="{{contract.nbill_date}}">
+                </div>
+
+                <label class="layui-form-label">开票金额</label>
+                <div class="layui-input-inline">
+                    <input name="nbill_price" id="nbill_price" class="layui-input" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="number" value="{{contract.nbill_price}}">
+                </div>
+            </div>
+
+                        <div class="layui-form-item">
+                <label class="layui-form-label">下次回款</label>
+                <div class="layui-input-inline">
+                    <input name="npayment_date"  id="npayment_date" class="layui-input" placeholder="yyyy-mm-dd" type="text" autocomplete="off" lay-verify="date" value="{{contract.nbill_date}}">
+                </div>
+
+                <label class="layui-form-label">回款金额</label>
+                <div class="layui-input-inline">
+                    <input name="nrepayment" id="nrepayment" class="layui-input" type="text" placeholder="yyyy-MM-dd" autocomplete="off" lay-verify="number" value="{{contract.nrepayment}}">
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">合同状态</label>
+                <div class="layui-input-inline">
+                    <input name="contract_status" class="layui-input" type="text" value="{{contract.status}}">
+            
+                </div>
+            </div>
+             <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" name="submit" value="add" >提交</button>
+                <button class="layui-btn  layui-btn-primary" type="reset">重置</button>
+    </div>
+  </div>
+
+        </form>
+
+        </div>
+      </div>
+</body>
+
+{%endblock%}

@@ -1,0 +1,17 @@
+亲爱的 {{ user.username }},
+
+    欢迎使用CSBU合同查询系统!
+
+    请点击下列链接地址来激活您的账号:
+
+    {{ url_for('auth.confirm', token=token, _external=True) }}
+
+
+
+    此致
+敬礼！
+
+CSBU Admin
+
+注意:此邮件为系统自动发出，请不要回复此邮件.
+

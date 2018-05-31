@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <title>合同详情</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+    <script src="/static/layui/layui.js" charset="utf-8"></script>
+</head>
+
+<body>
+    <div class="layui-card">
+        <div class="layui-card-header">
+            <h2>合同</h2>
+        </div>
+        <div class="layui-card-body">
+
+            <table id="contract" class="layui-table" lay-data="{elem:'#contract',url:'/contract/list/',page:true}">
+                <thead>
+                    <tr>
+                        <th lay-data="{field:'id',width:60,fixed:'left',templet: '#DetailTpl'}" rowspan="2">ID</th>
+                        <th lay-data="{field:'contract_number', width:150,fixed:'left'}" rowspan="2">合同编号</th>
+                        <th lay-data="{field:'department', width:80,fixed:'left'}" rowspan="2">部门</th>
+                        <th lay-data="{field:'custom', width:100}" rowspan="2">客户</th>
+                        <th lay-data="{field:'project_name', width:180}" rowspan="2">项目</th>
+                        <th lay-data="{field:'contract_date', width:110,type:'date'}" rowspan="2">合同日期</th>
+                        <th lay-data="{field:'contract_price', width:110,align:'right'}" rowspan="2">合同金额</th>
+                        <th lay-data="{field:'bill_date', width:110}" rowspan="2">开票日期</th>
+                        <th lay-data="{field:'bill_price', width:110,align:'right'}" rowspan="2">开票金额</th>
+                        <th lay-data="{field:'repayment_date', width:110}" rowspan="2">回款日期</th>
+                        <th lay-data="{field:'repayment', width:110,align:'right'}" rowspan="2">回款金额</th>
+                        <th lay-data="{field:'total_bill', width:110,align:'right'}" rowspan="2">累计开票</th>
+                        <th lay-data="{field:'total_repayment', width:110}" rowspan="2">累计回款</th>
+                        <th lay-data="{field:'department', width:110,align:'right'}" colspan="4">下次开票回款</th>
+                    </tr>
+                    <tr>
+                        <th lay-data="{field:'nbill_date', width:110}">开票日期</th>
+                        <th lay-data="{field:'nbill_price', width:110,align:'right'}">开票金额</th>
+                        <th lay-data="{field:'npayment_date', width:110}">回款日期</th>
+                        <th lay-data="{field:'nrepayment', width:110,align:'right'}">回款金额</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+    </div>
+</body>
+<script>
+    layui.use('table', function() {
+        var table = layui.table;
+    });
+</script>
+<script type="text/html" id="DetailTpl">
+    {% raw %}
+    <a href="/contract/{{d.id}}" target="_blanck">{{d.id}}</a> {%endraw%}
+</script>
+
+</html>

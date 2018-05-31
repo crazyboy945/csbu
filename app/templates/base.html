@@ -1,0 +1,95 @@
+<html>
+
+<head>
+    <title>
+        {% block title %}合同管理{% endblock %}
+    </title>
+
+    {% block styles %}
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+    <!--link rel="sytlesheet" href="/static/css/main.css"-->{% endblock %}
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <script>
+        ua = navigator.userAgent.toLowerCase();
+        handle = (ua.indexOf('mobi') > -1 || ua.indexOf('phone') > -1) && ua.indexOf('pad') === -1;
+    </script>
+</head>
+
+<body>
+
+    {% block navbar %}
+    <div class="navbar navbar-inverse" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <!--button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">导航</span>
+                    <span class="icon-bar">用户</span>
+                    <span class="icon-bar">项目</span>
+                    <span class="icon-bar">客户</span>
+                </button-->
+                <a class="navbar-brand">Dawnpro CSBU</a>
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>
+                        <a href="{{ url_for('main.index') }}">主页</a>
+                    </li>
+                    <li>
+                        <a href="{{ url_for('main.get_contract_list') }}">合同</a>
+                    </li>
+
+                    <li>
+                        <a href="{{ url_for('main.get_task') }}">任务</a>
+                    </li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+
+                    {% if current_user.is_authenticated %}
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <span class="glyphicon glyphicon-user"></span> 账号：{{current_user.username}}
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="{{ url_for('auth.change_password') }}">修改密码</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('auth.change_email_request') }}">修改电子邮件</a>
+                            </li>
+                            <li>
+                                <a href="{{ url_for('auth.logout') }}">登出</a>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <li>
+                        <a href="{{ url_for('auth.login') }}">登录</a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+    {% endblock %} {% block content %}
+    <!--div class="container"-->
+    <div class="container-fluid">
+        {% for message in get_flashed_messages() %}
+        <div class="alert alert-warning">
+            <button type="button" class="close" data-dismiss="alert">&times;</button> {{ message }}
+        </div>
+        {% endfor %} {% block page_content %}{% endblock %}
+    </div>
+    {% endblock %}
+
+</body>
+
+{% block scripts %}
+<script src="/static/js/jquery.min.js"></script>
+<script src="/static/js/bootstrap.min.js"></script>
+
+{{ moment.include_moment() }} {% endblock %} {% block usersrcipt%} {%endblock%}
+
+
+</html>

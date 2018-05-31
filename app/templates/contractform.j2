@@ -1,0 +1,170 @@
+<html>
+<head>
+    <title>合同信息</title>
+    <link rel="stylesheet" href="/static/layui/css/layui.css">
+
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+
+
+<body>
+    
+    <div class="layui-card">
+        <div class="layui-card-header"><h2>合同信息</h2></div>
+        <div class="layui-card-body">
+ 
+        <form class="layui-form"  method="post">
+            <input name="id" type="hidden" value="{{form.id}}">
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">合同编号</label>
+                <div class="layui-input-inline">
+                    {{ form.contract_number()}}
+                </div>
+          
+                <label class="layui-form-label">部门</label>
+                <div class="layui-input-inline">
+                    {{form.department()}}
+                    
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">项目名称</label>
+                <div class="layui-input-block">
+                    {{form.project_name}}
+                </div>
+
+            </div>
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">客户</label>
+                <div class="layui-input-block">
+                    {{form.custom}}
+                </div>
+
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">合同日期</label>
+                <div class="layui-input-inline">
+                    {{form.contract_date}}
+                </div>
+
+
+                <label class="layui-form-label">合同金额</label>
+                <div class="layui-input-inline">
+                {{form.contract_price}}
+                  </div>
+            </div>
+
+            <div class="layui-form-item">
+
+                <label class="layui-form-label">开票金额</label>
+                <div class="layui-input-inline">
+                   {{form.bill_price}}
+                </div>
+
+
+                <label class="layui-form-label">开票日期</label>
+                <div class="layui-input-inline">
+                   {{form.bill_date}}
+                </div>
+            </div>
+
+
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">回款金额</label>
+                <div class="layui-input-inline">
+                    {{form.repayment}}
+                </div>
+
+                <label class="layui-form-label">回款日期</label>
+                <div class="layui-input-inline">
+                    {{form.repayment_date}}
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">累计开票</label>
+                <div class="layui-input-inline">
+                    {{form.total_bill}}
+                </div>
+
+                <label class="layui-form-label">累计回款</label>
+                <div class="layui-input-inline">
+                    {{form.total_payment}}
+                </div>
+            </div>
+
+            <div class="layui-form-item">
+                <label class="layui-form-label">下次开票</label>
+                <div class="layui-input-inline">
+                    {{form.nbill_date}}
+                </div>
+
+                <label class="layui-form-label">下次回款</label>
+                <div class="layui-input-inline">
+                    {{form.npayment_date}}
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label">合同状态</label>
+                <div class="layui-input-inline">
+                    {{form.contract_status}}
+           
+                </div>
+            </div>
+             <div class="layui-form-item">
+            <div class="layui-input-block">
+                <button class="layui-btn" lay-submit="" >提交</button>
+                <button class="layui-btn  layui-btn-primary" type="reset">重置</button>
+    </div>
+  </div>
+
+        </form>
+
+        </div>
+      </div>
+</body>
+<script src="/static/layui/layui.js" charset="utf-8"></script>
+<script>
+    $("#department").find("option[value='{{form.department}}']").attr("selected",true);
+
+</script>
+<script>
+    layui.use(['form', 'layedit', 'laydate'], function() {
+        var form = layui.form,
+            layer = layui.layer,
+            layedit = layui.layedit,
+            laydate = layui.laydate;
+
+        //日期
+        laydate.render({
+            elem: '#contract_date'
+        });
+        laydate.render({
+            elem: '#bill_date'
+        });
+
+        laydate.render({
+            elem: '#repayment_date'
+        });
+
+        laydate.render({
+            elem: '#nbill_date'
+        });
+
+        laydate.render({
+            elem: '#npayment_date'
+        });
+
+
+
+    });
+</script>
+
+</html>

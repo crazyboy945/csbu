@@ -1,0 +1,96 @@
+<html>
+
+<head>
+    <title>合同信息</title>
+     <!-- jquery库-->
+    <script src="/static/js/jquery.min.js"></script>
+
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="/static/css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="/static/css/bootstrap-table.css">
+
+    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
+    <script src="/static/js/bootstrap.min.js"></script>
+    <script src="/static/js/bootstrap-table.js"></script>
+    <!-- 移动端1：1缩放达到缩放布局不乱的效果 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    
+</head>
+
+
+
+
+<body>
+
+ 
+    <table class="table table-bordered table-striped" id="table" >
+        <thead>
+        <tr>
+                        <th width="60" rowspan="2">ID</th>
+                        <th width="150" rowspan="2">合同编号</th>
+                        <th width="80" rowspan="2">部门</th>
+                        <th width="100" rowspan="2">客户</th>
+                        <th width="180" rowspan="2">项目</th>
+                        <th width="110" rowspan="2">合同日期</th>
+                        <th width="110" rowspan="2">合同金额</th>
+                        <th width="110" rowspan="2">开票日期</th>
+                        <th width="110" rowspan="2">开票金额</th>
+                        <th width="110" rowspan="2">回款日期</th>
+                        <th width="110" rowspan="2">回款金额</th>
+                        <th width="110" rowspan="2">累计开票</th>
+                        <th width="110" rowspan="2">累计回款</th>
+                        <th colspan="4">下次开票回款</th>
+                    </tr>
+                    <tr>
+                        <th width="110">开票日期</th>
+                        <th width="110">开票金额</th>
+                        <th width="110">回款日期</th>
+                        <th width="110">回款金额</th>
+
+                    </tr>
+        </thead>
+        <tbody id="user_table_tbody">
+
+
+          
+                {% for con in cons %}
+                <tr>
+                    <td>{{con.id}}</td>
+                    <td>{{con.contract_number}}</td>
+                    <td>{{con.department}}</td>
+                    <td>{{con.custom}}</td>
+                    <td>{{con.project_name}}</td>
+                    <td>{{con.contract_date}}</td>
+                    <td>{{con.contract_price}}</td>
+                    <td>{{con.bill_date}}</td>
+                    <td>{{con.bill_price}}</td>
+                    <td>{{con.repayment_date}}</td>
+                    <td>{{con.repayment}}</td>
+                    <td>{{con.total_bill}}</td>
+                    <td>{{con.total_payment}}</td>
+                    <td>{{con.nbill_date}}</td>
+                    <td>{{con.nbill_price}}</td>
+                    <td>{{con.npayment_date}}</td>
+                    <td>{{con.npayment}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+<script>
+    var $table = $('#table');
+
+   
+
+    
+        $table.bootstrapTable('destroy').bootstrapTable({
+            search: true,
+            toolbar: '.toolbar',
+            fixedColumns: true,
+            fixedNumber: 3
+        });
+   
+
+</body>
+
+
+</html>
